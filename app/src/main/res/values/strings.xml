@@ -4,7 +4,7 @@
     <!--Текст Start страницы -->
     <string name="textStartHeader">Хотите необычно провести время?</string>
     <string name="textStart">DT tour поможет вам выбрать лучший для вас тур\nиз тысячи различных\nготовых туристических\nмаршрутов,\nкоторые предоставили туроператоры\nи пользователи.\nТакже вы можете самостоятельно сконструировать маршрут\nподходящий именно вам.\n</string>
-    <string name="textStartButton">За что?</string>
+    <string name="textStartButton">Перейти дальше</string>
 
     <!--Текст City/Tour страницы -->
     <string name="textCityHeader">Выбор города</string>
