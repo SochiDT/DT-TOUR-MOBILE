@@ -1,0 +1,108 @@
+[
+  {
+    "first": "Москва",
+    "second": "2 тура",
+    "value": "2",
+    "image": "moscow",
+    "tours": [
+      {
+        "first": "Гик трип",
+        "second": "$10",
+        "value": "0",
+        "image": "trip"
+      },
+      {
+        "first": "Алко тур",
+        "second": "$100",
+        "value": "0",
+        "image": "alcho"
+      }
+    ]
+  },
+  {
+    "first": "Сочи",
+    "second": "3 тура",
+    "value": "3",
+    "image": "sochi",
+    "tours": [
+      {
+        "first": "Гик трип",
+        "second": "$10",
+        "value": "0",
+        "image": "trip"
+      },
+      {
+        "first": "Алко тур",
+        "second": "$100",
+        "value": "0",
+        "image": "alcho"
+      },
+      {
+        "first": "Алко тур",
+        "second": "$200",
+        "value": "0",
+        "image": "alcho"
+      }
+    ]
+  },
+  {
+    "first": "Рим",
+    "second": "1 тур",
+    "value": "1",
+    "image": "rim",
+    "tours": [
+      {
+        "first": "Гик трип",
+        "second": "$10",
+        "value": "0",
+        "image": "trip"
+      }
+    ]
+  },
+  {
+    "first": "Нурсултан",
+    "second": "2 тура",
+    "value": "2",
+    "image": "nur",
+    "tours": [
+      {
+        "first": "Гик трип",
+        "second": "$10",
+        "value": "0",
+        "image": "trip"
+      },
+      {
+        "first": "Алко тур",
+        "second": "$100",
+        "value": "0",
+        "image": "alcho"
+      }
+    ]
+  },
+  {
+    "first": "Лас-Вегас",
+    "second": "3 тура",
+    "value": "3",
+    "image": "la",
+    "tours": [
+      {
+        "first": "Гик трип",
+        "second": "$10",
+        "value": "0",
+        "image": "trip"
+      },
+      {
+        "first": "Алко тур",
+        "second": "$100",
+        "value": "0",
+        "image": "alcho"
+      },
+      {
+        "first": "Гик трип",
+        "second": "$20",
+        "value": "0",
+        "image": "trip"
+      }
+    ]
+  }
+]

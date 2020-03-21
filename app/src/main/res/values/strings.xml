@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">DT Tour</string>
+
+    <!--Текст Start страницы -->
+    <string name="textStartHeader">Вы все - говно!</string>
+    <string name="textStart">Мы все - говно!\nГовно должно говорить громче!\nМы - говно!\nЗдесь вам не курорт, калаш мне в зад!\nЭто армия, тротил мне в жопу!\nАрмия даже из таких гомиков как мы, делает настоящих мужчин, разряд мне в анус!\nТы меня понял?!\nВы что думаете, с вами здесь будут нянчиться, истребитель мне в ангар?\nЯ лично буду выбивать вам дурь из башки, крейсер мне в бухту!\nВы здесь чтобы защищать Родину, а не валять... этого... Ваньку!\nВсё понятно, девочки, весь ядерный потенциал мне - куда?\nВам в попу!\nТы на ушко скажи, куда мне этот потенциал?!\nВ попу.\nСто нарядов вне очереди!</string>
+    <string name="textStartButton">За что?</string>
+
+    <!--Текст City/Tour страницы -->
+    <string name="textCityHeader">Выбор города</string>
+    <string name="textTourHeader">Выбор тура</string>
+
+    <!--Текст Info Страницы -->
+    <string name="textInfo1Row">Участвует</string>
+    <string name="textInfo2Row">Стоимость</string>
+    <string name="textInfo3Row">Дата</string>
+    <string name="textInfo4Row">Место встречи</string>
+    <string name="textInfo5Row">Куратор</string>
+    <string name="textInfoButton">Принять участие</string>
+
+    <!--Просто мусор -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>
