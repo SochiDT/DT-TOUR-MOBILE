@@ -21,7 +21,7 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:text="@string/textCityHeader"
@@ -34,7 +34,9 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:divider="#00000000"
-            android:dividerHeight="0dp" />
+            android:dividerHeight="0dp"
+            android:scrollbarThumbHorizontal="@color/f"
+            android:scrollbarThumbVertical="@color/f" />
 
     </LinearLayout>
 
@@ -50,5 +52,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer"/>
+        app:insetForeground="#ffffff"
+        app:itemBackground="@drawable/ic_dehaze_black_24dp"
+        app:menu="@menu/activity_main_drawer" />
 </androidx.drawerlayout.widget.DrawerLayout>

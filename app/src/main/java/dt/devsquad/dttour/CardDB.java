@@ -2,17 +2,12 @@ package dt.devsquad.dttour;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class CardDB {
     ArrayList<Card> cardSet = new ArrayList<>();
-    String[] textFirst;
-    String[] textSecond;
-    int[] value;
-    int[] id;
     Map<String, Integer> map = new HashMap<>();
 
     CardDB(JSONArray array){

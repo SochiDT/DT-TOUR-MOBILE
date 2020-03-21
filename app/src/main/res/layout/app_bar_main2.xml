@@ -11,12 +11,12 @@
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/whiteTextColor"
+        android:background="#2C7BE4"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:title="@string/textTourHeader"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
-        app:titleTextColor="#000000" />
+        app:titleTextColor="#FFFFFF" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

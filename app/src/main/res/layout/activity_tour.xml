@@ -33,7 +33,10 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:divider="#00000000"
-            android:dividerHeight="0dp"/>
+            android:dividerHeight="0dp"
+            android:scrollbarThumbHorizontal="@color/f"
+            android:scrollbarThumbVertical="@color/f"
+            android:scrollbars="vertical" />
 
     </LinearLayout>
     <include
