@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class CardAdapter extends BaseAdapter {
@@ -19,12 +21,16 @@ public class CardAdapter extends BaseAdapter {
     private int layout;
     private LayoutInflater lInflater;
     private ArrayList<Card> objects;
+    int width;
+    int height;
 
-    CardAdapter(Context context, ArrayList<Card> products, @LayoutRes int res) {
+    CardAdapter(Context context, ArrayList<Card> products, @LayoutRes int res,int _width, int _height) {
         ctx = context;
         layout = res;
         objects = products;
         lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        width = _width;
+        height = _height;
     }
 
     @Override
@@ -52,7 +58,13 @@ public class CardAdapter extends BaseAdapter {
         Card p = getCard(position);
         ((TextView) view.findViewById(R.id.textFirst)).setText(p.textFirst);
         ((TextView) view.findViewById(R.id.textSecond)).setText(p.textSecond);
-        ((ImageView) view.findViewById(R.id.imageUrl)).setImageResource(p.id);
+
+        try{
+            Picasso.with(view.getContext()).load(p.id).resize(width, height).centerCrop().into((ImageView) view.findViewById(R.id.imageUrl));
+        }catch (Exception e){
+            System.out.println(e);
+            System.out.println(p.id);
+        }
         return view;
     }
 

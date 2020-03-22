@@ -8,47 +8,43 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.google.android.material.navigation.NavigationView;
-
-import org.jetbrains.annotations.NotNull;
-import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 
 public class CityActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     CardDB cardDB;
-    ArrayList<Card> nameEquip = new ArrayList<>();
+    ArrayList<String> nameEquip = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
 
-        JSONArray a = null;
-        try {
-            InputStream is = this.getAssets().open("db/equip.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-
-            String bufferString = new String(buffer);
-            JSONParser parser = new JSONParser();
-            a = (JSONArray) parser.parse(bufferString);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        cardDB = new CardDB(a);
-        nameEquip = cardDB.getCardSet();
+//        JSONArray a = null;
+//        try {
+//            InputStream is = this.getAssets().open("db/equip.json");
+//            int size = is.available();
+//            byte[] buffer = new byte[size];
+//            is.read(buffer);
+//            is.close();
+//
+//            String bufferString = new String(buffer);
+//            JSONParser parser = new JSONParser();
+//            a = (JSONArray) parser.parse(bufferString);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//
+//        cardDB = new CardDB(a);
+        nameEquip.add("Загрузка...");
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -63,16 +59,17 @@ public class CityActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         final ListView listViewMenu = this.findViewById(R.id.listCity);
-        CardAdapter adapter = new CardAdapter(this,nameEquip,R.layout.list_card);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameEquip);
         listViewMenu.setAdapter(adapter);
 
+        new JsonUrlReader(listViewMenu,"https://dt-tour.tk/api/v2/Api.php?apicall=gettour&id=",this,R.layout.list_card,600,400).execute("https://dt-tour.tk/api/v2/Api.php?apicall=getcity","");
 
         listViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                 Card card = (Card)listViewMenu.getItemAtPosition(position);
                 Intent intent = new Intent(CityActivity.this, TourActivity.class);
-                intent.putExtra(CardDB.class.getSimpleName(), cardDB);
+                //intent.putExtra(CardDB.class.getSimpleName(), cardDB);
                 intent.putExtra(Card.class.getSimpleName(), card);
                 startActivity(intent);
             }

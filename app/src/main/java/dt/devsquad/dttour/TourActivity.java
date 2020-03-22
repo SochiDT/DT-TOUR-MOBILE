@@ -11,15 +11,19 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.google.android.material.navigation.NavigationView;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class TourActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    ArrayList<Card> nameEquip = new ArrayList<>();
+    ArrayList<String> nameEquip = new ArrayList<>();
     List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
     @Override
@@ -28,13 +32,14 @@ public class TourActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_tour);
 
         Bundle arguments = getIntent().getExtras();
-        final CardDB cardDB;
         final Card card;
         if(arguments!=null){
-            cardDB = (CardDB) arguments.getSerializable(CardDB.class.getSimpleName());
             card = (Card) arguments.getSerializable(Card.class.getSimpleName());
-            nameEquip = cardDB.getTourSet(card.getArray());
+        }else {
+            card = new Card("pizdec","nahui","blyat");
+            card.setUrl("https://dt-tour.tk/api/v2/Api.php?apicall=gettour&id=2");
         }
+        nameEquip.add("Загрузка...");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
@@ -47,14 +52,19 @@ public class TourActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view2);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ListView listViewMenu = this.findViewById(R.id.listCity);
-        CardAdapter adapter = new CardAdapter(this,nameEquip,R.layout.list_card2);
+        final ListView listViewMenu = this.findViewById(R.id.listCity);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameEquip);
         listViewMenu.setAdapter(adapter);
+
+        new JsonUrlReader(listViewMenu,"https://dt-tour.tk/api/v2/Api.php?apicall=gettourcal&id=",this,R.layout.list_card2,1000,265).execute(card.getUrl(),"");
 
         listViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-                startActivity(new Intent(TourActivity.this, InfoActivity.class));
+                Card card = (Card)listViewMenu.getItemAtPosition(position);
+                Intent intent =new Intent(TourActivity.this, InfoActivity.class);
+
+                startActivity(intent);
             }
         });
     }

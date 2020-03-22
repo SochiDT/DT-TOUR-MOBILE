@@ -7,22 +7,22 @@ import java.io.Serializable;
 public class Card implements Serializable {
     String textFirst;
     String textSecond;
-    int value;
-    int id;
-    private JSONArray array;
+    //int value;
+    String id;
+    private String url;
 
-    Card(String textFirst, String textSecond,int value, int id){
+    Card(String textFirst, String textSecond, String id) {
         this.textFirst = textFirst;
         this.textSecond = textSecond;
-        this.value = value;
+        //this.value = value;
         this.id = id;
     }
 
-    public JSONArray getArray() {
-        return array;
+    public String getUrl() {
+        return url;
     }
 
-    public void setArray(JSONArray array) {
-        this.array = array;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

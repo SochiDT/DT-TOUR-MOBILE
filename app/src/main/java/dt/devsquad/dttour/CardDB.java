@@ -3,27 +3,23 @@ package dt.devsquad.dttour;
 import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 class CardDB implements Serializable {
     private ArrayList<Card> cardSet = new ArrayList<>();
-    private ArrayList<Card> tourSet = new ArrayList<>();
-    private Map<String, Integer> map = new HashMap<>();
+    String url;
 
-    CardDB(JSONArray array) {
-        map.put("moscow", R.drawable.moscow);
-        map.put("sochi", R.drawable.sochi);
-        map.put("rim", R.drawable.rim);
-        map.put("nur", R.drawable.nur);
-        map.put("la", R.drawable.la);
-        map.put("trip", R.drawable.trip);
-        map.put("alcho", R.drawable.alcho);
-
-        cardSet.clear();
-        cardSet = createCardList(array);
+    CardDB(String array,String url) {
+        this.url = url;
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject a = (JSONObject) parser.parse(array);
+            JSONArray b = (JSONArray) a.get("stud");
+            cardSet.clear();
+            cardSet = createCardList(b);
+        } catch (Exception e) { }
     }
 
     @NotNull
@@ -31,8 +27,9 @@ class CardDB implements Serializable {
         ArrayList<Card> cardSet = new ArrayList<>();
         for (Object o : array) {
             org.json.simple.JSONObject equip = (JSONObject) o;
-            Card card = new Card((String) equip.get("first"), (String) equip.get("second"), Integer.parseInt((String) equip.get("value")), map.get((String) equip.get("image")));
-            card.setArray((JSONArray) equip.get("array"));
+            Card card = new Card((String) equip.get("name"), (String) equip.get("numtour"), (String) equip.get("img"));
+            card.setUrl(url+equip.get("id"));
+            if(card.id.getBytes().length>5)
             cardSet.add(card);
         }
         return cardSet;
@@ -45,11 +42,6 @@ class CardDB implements Serializable {
             matArray.add((String) m);
         }
         return matArray;
-    }
-
-    ArrayList<Card> getTourSet(JSONArray jsonArray) {
-        tourSet.clear();
-        return tourSet = createCardList(jsonArray);
     }
 
     ArrayList<Card> getCardSet() {
