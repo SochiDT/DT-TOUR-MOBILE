@@ -16,6 +16,7 @@ import android.widget.ListView;
 import com.google.android.material.navigation.NavigationView;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class TourActivity extends AppCompatActivity implements NavigationView.On
         if(arguments!=null){
             card = (Card) arguments.getSerializable(Card.class.getSimpleName());
         }else {
-            card = new Card("pizdec","nahui","blyat");
+            card = new Card("pizdec","nahui","blyat",new JSONObject());
             card.setUrl("https://dt-tour.tk/api/v2/Api.php?apicall=gettour&id=2");
         }
         nameEquip.add("Загрузка...");
@@ -63,7 +64,7 @@ public class TourActivity extends AppCompatActivity implements NavigationView.On
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                 Card card = (Card)listViewMenu.getItemAtPosition(position);
                 Intent intent =new Intent(TourActivity.this, InfoActivity.class);
-
+                intent.putExtra(Card.class.getSimpleName(), card);
                 startActivity(intent);
             }
         });

@@ -27,7 +27,7 @@ class CardDB implements Serializable {
         ArrayList<Card> cardSet = new ArrayList<>();
         for (Object o : array) {
             org.json.simple.JSONObject equip = (JSONObject) o;
-            Card card = new Card((String) equip.get("name"), (String) equip.get("numtour"), (String) equip.get("img"));
+            Card card = new Card((String) equip.get("name"), (String) equip.get("numtour"), (String) equip.get("img"),equip);
             card.setUrl(url+equip.get("id"));
             if(card.id.getBytes().length>5)
             cardSet.add(card);
