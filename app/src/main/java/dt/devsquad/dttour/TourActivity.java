@@ -8,15 +8,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,22 +27,20 @@ public class TourActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour);
 
-        String[] first = new String[] {"Гик трип", "Алко тур","Гик трип","Алко тур","Алко тур"};
-        String[] second = new String[] {"$10","$100","$20","$200","$150"};
-        int[] value = new int[] {2,3,1,2,3};
-        int[] image = new int[] {R.drawable.trip, R.drawable.alcho, R.drawable.trip, R.drawable.alcho, R.drawable.alcho};
-
-        nameEquip.clear();
-        for (int i = 0; i < first.length; i++)
-            nameEquip.add(new Card(first[i],second[i],value[i],image[i]));
-
+        Bundle arguments = getIntent().getExtras();
+        final CardDB cardDB;
+        final Card card;
+        if(arguments!=null){
+            cardDB = (CardDB) arguments.getSerializable(CardDB.class.getSimpleName());
+            card = (Card) arguments.getSerializable(Card.class.getSimpleName());
+            nameEquip = cardDB.getTourSet(card.getArray());
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -54,7 +49,6 @@ public class TourActivity extends AppCompatActivity implements NavigationView.On
 
         ListView listViewMenu = this.findViewById(R.id.listCity);
         CardAdapter adapter = new CardAdapter(this,nameEquip,R.layout.list_card2);
-        //SimpleAdapter adapter1 = new SimpleAdapter(this, data,R.layout.list_card2, new String[] {"First Line", "Second Line" },new int[] {R.id.textFirst, R.id.textSecond });
         listViewMenu.setAdapter(adapter);
 
         listViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -67,20 +61,20 @@ public class TourActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
+        switch (item.getItemId()){
+            case R.id.nav_camera:{
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            } case R.id.nav_gallery:{
 
-        } else if (id == R.id.nav_slideshow) {
+            } case R.id.nav_slideshow:{
 
-        } else if (id == R.id.nav_manage) {
+            } case R.id.nav_manage:{
 
-        } else if (id == R.id.nav_share) {
+            } case R.id.nav_share:{
 
-        } else if (id == R.id.nav_send) {
+            } case R.id.nav_send:{
 
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
@@ -90,18 +84,9 @@ public class TourActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-
-
         return super.onOptionsItemSelected(item);
     }
-
-   
 
     @Override
     public void onBackPressed() {

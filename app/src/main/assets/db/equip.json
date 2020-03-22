@@ -4,18 +4,34 @@
     "second": "2 тура",
     "value": "2",
     "image": "moscow",
-    "tours": [
+    "array": [
       {
         "first": "Гик трип",
         "second": "$10",
         "value": "0",
-        "image": "trip"
+        "image": "trip",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       },
       {
         "first": "Алко тур",
         "second": "$100",
         "value": "0",
-        "image": "alcho"
+        "image": "alcho",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       }
     ]
   },
@@ -24,24 +40,48 @@
     "second": "3 тура",
     "value": "3",
     "image": "sochi",
-    "tours": [
+    "array": [
       {
         "first": "Гик трип",
         "second": "$10",
         "value": "0",
-        "image": "trip"
+        "image": "trip",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       },
       {
         "first": "Алко тур",
         "second": "$100",
         "value": "0",
-        "image": "alcho"
+        "image": "alcho",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       },
       {
         "first": "Алко тур",
         "second": "$200",
         "value": "0",
-        "image": "alcho"
+        "image": "alcho",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       }
     ]
   },
@@ -50,12 +90,20 @@
     "second": "1 тур",
     "value": "1",
     "image": "rim",
-    "tours": [
+    "array": [
       {
         "first": "Гик трип",
         "second": "$10",
         "value": "0",
-        "image": "trip"
+        "image": "trip",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       }
     ]
   },
@@ -64,18 +112,34 @@
     "second": "2 тура",
     "value": "2",
     "image": "nur",
-    "tours": [
+    "array": [
       {
         "first": "Гик трип",
         "second": "$10",
         "value": "0",
-        "image": "trip"
+        "image": "trip",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       },
       {
         "first": "Алко тур",
         "second": "$100",
         "value": "0",
-        "image": "alcho"
+        "image": "alcho",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       }
     ]
   },
@@ -84,24 +148,48 @@
     "second": "3 тура",
     "value": "3",
     "image": "la",
-    "tours": [
+    "array": [
       {
         "first": "Гик трип",
         "second": "$10",
         "value": "0",
-        "image": "trip"
+        "image": "trip",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       },
       {
         "first": "Алко тур",
         "second": "$100",
         "value": "0",
-        "image": "alcho"
+        "image": "alcho",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       },
       {
         "first": "Гик трип",
         "second": "$20",
         "value": "0",
-        "image": "trip"
+        "image": "trip",
+        "array": [
+          {
+            "first": "Гик трип",
+            "second": "$10",
+            "value": "0",
+            "image": "trip"
+          }
+        ]
       }
     ]
   }

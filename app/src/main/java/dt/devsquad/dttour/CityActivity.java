@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.google.android.material.navigation.NavigationView;
+
+import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import java.io.InputStream;
@@ -30,7 +32,7 @@ public class CityActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
 
-
+        JSONArray a = null;
         try {
             InputStream is = this.getAssets().open("db/equip.json");
             int size = is.available();
@@ -40,24 +42,13 @@ public class CityActivity extends AppCompatActivity implements NavigationView.On
 
             String bufferString = new String(buffer);
             JSONParser parser = new JSONParser();
-            JSONArray a = (JSONArray) parser.parse(bufferString);
-
-            cardDB = new CardDB(a);
-
+            a = (JSONArray) parser.parse(bufferString);
         } catch (Exception e) {
             System.out.println(e);
         }
 
-
-        String[] first = new String[] {"Москва", "Сочи","Рим","Нурсултан","Лас-Вегас"};
-        String[] second = new String[] {"2 тура","3 тура","1 тур","2 тура","3 тура"};
-        int[] value = new int[] {2,3,1,2,3};
-        int[] image = new int[] {R.drawable.moscow, R.drawable.sochi, R.drawable.rim, R.drawable.nur, R.drawable.la};
-
-
-        nameEquip.clear();
-        for (int i = 0; i < first.length; i++)
-            nameEquip.add(new Card(first[i],second[i],value[i],image[i]));
+        cardDB = new CardDB(a);
+        nameEquip = cardDB.getCardSet();
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -71,36 +62,43 @@ public class CityActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ListView listViewMenu = this.findViewById(R.id.listCity);
+        final ListView listViewMenu = this.findViewById(R.id.listCity);
         CardAdapter adapter = new CardAdapter(this,nameEquip,R.layout.list_card);
         listViewMenu.setAdapter(adapter);
-
 
 
         listViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-                startActivity(new Intent(CityActivity.this, TourActivity.class));
+                Card card = (Card)listViewMenu.getItemAtPosition(position);
+                Intent intent = new Intent(CityActivity.this, TourActivity.class);
+                intent.putExtra(CardDB.class.getSimpleName(), cardDB);
+                intent.putExtra(Card.class.getSimpleName(), card);
+                startActivity(intent);
             }
         });
     }
 
+    public CardDB getCardDB() {
+        return cardDB;
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
+        switch (item.getItemId()){
+            case R.id.nav_camera:{
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            } case R.id.nav_gallery:{
 
-        } else if (id == R.id.nav_slideshow) {
+            } case R.id.nav_slideshow:{
 
-        } else if (id == R.id.nav_manage) {
+            } case R.id.nav_manage:{
 
-        } else if (id == R.id.nav_share) {
+            } case R.id.nav_share:{
 
-        } else if (id == R.id.nav_send) {
+            } case R.id.nav_send:{
 
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
