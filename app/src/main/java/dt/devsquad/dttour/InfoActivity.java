@@ -40,6 +40,6 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void onButtonLogin(View view){
-        //startActivity(new Intent(StartActivity.this, CityActivity.class));
+        startActivity(new Intent(InfoActivity.this, ModalActivity.class));
     }
 }
